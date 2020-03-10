@@ -41,50 +41,45 @@ navbarPage(title = div(
                                       selectInput("color", "Color", vars),
                                       selectInput("provincia", "Provinces", provincias, selected = NULL),
                                       conditionalPanel("input.provincia", 
-                                                       selectInput("departamento", "Departamento", c("Departamentos"=""),
+                                                       selectInput("departamento", "Districts", c("Departamentos"=""),
                                                                    selected = NULL)),
-                                      numericInput("minScoreMap", "Mín. Índice", min = 0, max = 5, value = 0),
-                                      numericInput("maxScoreMap", "Máx. Índice", min = 0, max = 5, value = 5)
+                                      numericInput("minScoreMap", "Min. Score", min = 0, max = 5, value = 0),
+                                      numericInput("maxScoreMap", "Max. Score", min = 0, max = 5, value = 5)
                         ))
                         ),
                         
                         tags$div(id="cite",
-                                 'Desarrollado por ', tags$em('Menta Comunicación SRL'), ' (todos los derechos reservados).'
+                                 'Developed by ', tags$em('Menta Comunicación SRL'), ' (All rights reserved).'
                         )
                     )
            ),
            
-           tabPanel("¿Qué es esto?",
+           tabPanel("About",
                     icon("crosshair"),
-                    h2("Características generales"),
+                    h2("Key Features"),
                     br(),
-                    h3("Variables contempladas"),
-                    h4("Para construir el índice se analizó, a nivel de radio (la unidad más pequeña del Censo 
-de Población, Hogares y Viviendas 2010), un conjunto de variables:"),
+                    h3("Variables"),
+                    h4("The index was built at radius level (the littlest unit of the Argentina National Census) according to a set of variables: "),
                     h4(tags$ul(
-                      tags$p("1 Porcentaje de hogares con jefe ocupado;"),
-                      tags$p("2) Porcentaje de hogares con al menos una Necesidad Básica Insatisfecha (NBI);"),
-                      tags$p("3) Porcentaje de mujeres en el radio;"),
-                      tags$p("4) Porcentaje de hogares con jefe con secundario completo;"),
-                      tags$p("5) Porcentaje de viviendas con calidad de materiales deficiente;"),
-                      tags$p("6) Edad promedio del radio;"),
-                      tags$p("7) Edad mediana del radio."))),
+                      tags$p("1 % of hhs with worker householder;"),
+                      tags$p("2) % of hhs with at least one Unmet Basic Needs (NBI);"),
+                      tags$p("3) % of women;"),
+                      tags$p("4) % of hhs with householder who has at least a high school degree;"),
+                      tags$p("5) % of households con calidad de materiales deficiente;"),
+                      tags$p("6) Mean age;"),
+                      tags$p("7) Median age."))),
                     br(),
-                    h3("Metodología de construcción"),
-                    h4("En base a esta información se realizó un Análisis de Componentes Principales, 
-                      una técnica estadística que consiste en obtener la mayor cantidad de información posible de un 
-                      conjunto de datos construyendo variables latentes a partir de las variables existentes. Esto 
-                      permitió obtener dos índices, uno principal y otro secundario, donde se pueden apreciar 
-                      características distintivas de la población de cada radio."),
+                    h3("Methodology"),
+                    h4("The information was analized using a Principal Component Analysis (PCA), 
+                    a dimensionality-reduction method used to obtain as much information as possible from a large dataset
+                    by transforming existing variables into latent variables. Two indexes were obtained to observe the  
+                    distinctive characteristics of the census radius population."),
                     br(),
-                    h3("Dimensión principal y secundaria"),
-
-                    h4("A continuación podemos observar cómo este Índice socioeconómico en su dimensión principal
-                      identifica con un valor elevado a aquellos radios con bajo porcentaje de hogares con NBI y de viviendas 
-                      con materiales deficientes, alto porcentaje de hogares con jefatura con secundario completo, 
-                      alta edad promedio y alto porcentaje de mujeres. Esto también se condice con hogares de tamaño 
-                  promedio más pequeño."),
-                    h4("La primera dimensión del Análisis de Componentes Principales, esto es, el índice principal, 
+                    h3("Primary and Secondary Dimensions"),
+                    h4("The Primary Dimension of the Socioeconomic Index detects with a high value the radius with: low % of Hhs with Unmet Basic Needs and viviendas con materiales deficientes,
+                       high % of Hhs with householder who has at least a high school degree, high figures of mean age and high % of women. Also with smaller households."),
+                    h4("The primary dimension "
+                    "La primera dimensión del Análisis de Componentes Principales, esto es, el índice principal, 
                     explica  casi la mitad de la variabilidad total (47%) del conjunto de datos y describe,
                        en una sola variable, las características socioeconómicas de la población del radio."),
                     tags$img(src = "pca_dim1.png", align = "center", height = "480px", width = "640px"),
