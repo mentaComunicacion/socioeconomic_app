@@ -1,0 +1,149 @@
+input[type="number"] {
+  max-width: 80%;
+}
+
+div.outer {
+  position: fixed;
+  top: 41px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  padding: 0;
+}
+
+/* Customize fonts */
+  label { 
+    font-family: 'Helvetica Neue', Helvetica;
+    color : #179E8D;
+    font-weight: 400;
+  }
+
+  input, select { 
+    font-family: 'Helvetica Neue', Helvetica;
+    color : black;
+    font-weight: 400;
+  }
+
+  body { 
+    font-family: 'Helvetica Neue', Helvetica;
+    color:  #179E8D;
+    font-weight: 200;
+    padding-top: 50px;
+  }
+
+  h1, h2, h3 { font-weight: 400; 
+    font-family: 'Helvetica Neue', Helvetica;
+    color: #179E8D;}
+
+  h4 { font-weight: 400; 
+    font-family: 'Helvetica Neue', Helvetica;
+       color: black;}
+
+  li {
+    color: white;
+}
+
+#controls {
+/* Appearance */
+  color: #179E8D;
+  background-color: lightgray;
+padding: 0 20px 20px 20px;
+cursor: move;
+/* Fade out while not hovering */
+  opacity: 0.65;
+zoom: 0.9;
+transition: opacity 500ms 1s;
+}
+#controls:hover {
+/* Fade in while hovering */
+  opacity: 0.95;
+transition-delay: 0;
+}
+
+/* Position and style citation */
+  #cite {
+  position: absolute;
+  color: black;
+  bottom: 10px;
+  left: 150px;
+  font-size: 12px;
+}
+
+/* If not using map tiles, show a white background */
+  .leaflet-container {
+    background-color: white !important;
+  }
+
+/* Add an image to navbar */
+  #img-id{
+    position: fixed; 
+    right: 10px;
+    top: 10px;
+  }
+
+/*Change title colors*/
+  #title {
+  color: #179E8D;
+}
+
+.navbar-default {
+  background-color: white !important;
+}
+
+/*Collapsible button*/
+button {
+  font-family: 'Helvetica Neue', Helvetica;
+  right: -20px;
+  background-color: white;  
+  color: black;
+}
+
+button.collapsed:after
+{
+  width:80px;
+  display: inline-block;
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  content: 'Expandir \f063';
+  transition: all linear 0.25s;
+}
+
+button:after
+{
+  width:80px;
+  display: inline-block;
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  content: 'Minimizar \f062';
+  transition: all linear 0.25s;
+}
+
+.btn:after {
+width:0px;
+content: '';
+}
+
+.handsontable th {
+  background-color: white;
+  color: #179E8D;
+}
+
+.ht_master tr td {
+  background-color: #F00;
+}
+.ht_master tr > td:nth-of-type(even) {
+  background-color: #f00;
+}
+
+.ht_master tr > td:nth-child(3) {
+  background-color: #f00;
+}
