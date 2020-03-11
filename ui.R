@@ -3,10 +3,10 @@ library(rhandsontable)
 
 # Choices for drop-downs
 vars <- c(
-  "Indice Socioeconomico" = "scr_mnt",
-  "Indice (secundario)" = "scr_m_2",
-  "Personas" = "totlpbl",
-  "Hogares" = "hogares")
+  "Socioeconomic Index" = "scr_mnt",
+  "Index (secondary)" = "scr_m_2",
+  "Total Population" = "totlpbl",
+  "Households" = "hogares")
 
 
 navbarPage(title = div(
@@ -61,11 +61,11 @@ navbarPage(title = div(
                     h3("Variables"),
                     h4("The index was built at radius level (the littlest unit of the Argentina National Census) according to a set of variables: "),
                     h4(tags$ul(
-                      tags$p("1 % of hhs with worker householder;"),
+                      tags$p("1 % of hhs with employed householder;"),
                       tags$p("2) % of hhs with at least one Unmet Basic Needs (NBI);"),
                       tags$p("3) % of women;"),
                       tags$p("4) % of hhs with householder who has at least a high school degree;"),
-                      tags$p("5) % of households con calidad de materiales deficiente;"),
+                      tags$p("5) % of hhs with poor housing conditions;"),
                       tags$p("6) Mean age;"),
                       tags$p("7) Median age."))),
                     br(),
@@ -76,41 +76,39 @@ navbarPage(title = div(
                     distinctive characteristics of the census radius population."),
                     br(),
                     h3("Primary and Secondary Dimensions"),
-                    h4("The Primary Dimension of the Socioeconomic Index detects with a high value the radius with: low % of Hhs with Unmet Basic Needs and viviendas con materiales deficientes,
-                       high % of Hhs with householder who has at least a high school degree, high figures of mean age and high % of women. Also with smaller households."),
-                    h4("The primary dimension "
-                    "La primera dimensión del Análisis de Componentes Principales, esto es, el índice principal, 
-                    explica  casi la mitad de la variabilidad total (47%) del conjunto de datos y describe,
-                       en una sola variable, las características socioeconómicas de la población del radio."),
-                    tags$img(src = "pca_dim1.png", align = "center", height = "480px", width = "640px"),
+                    h4("The Primary Dimension of the Socioeconomic Index detects high figures in radius with: low % of hhs with Unmet Basic Needs (NBI) and with poor housing conditions,
+                       high % of hhs with householder who has at least a high school degree, high figures of mean age and high % of women. Also with smaller households."),
+                    h4("The Primary Dimension of the PCA explains almost half of the total variability (47%) of the data set and it describes in only one variable the socioeconomic characteristics 
+                       of the radius population."),
+                    tags$img(src = "pca_dim1.png", align = "center", height = "480px", width = "800px"),
                   br(),
                   br(),
-                  h4("La segunda dimensión, que explica alrededor de un 20% de la variablidad total, contempla principalmente las características
-                       de los radios con bajo porcentaje de hogares con jefe ocupado:"),
-                    tags$img(src = "pca_dim2.png", align = "center",  height = "480px", width = "640px"),
+                  h4("The Secondary Dimension explains almost 20% of the total variability and it mainly describes the characteristics of radius 
+                     with low % of hhs with employed householder:"),
+                    tags$img(src = "pca_dim2.png", align = "center",  height = "480px", width = "800px"),
                     hr()
                     ),
-           tabPanel("Indicadores",
+           tabPanel("Attributes",
                     icon("crosshair"),
-                    h2("Atributos por radio"),
+                    h2("Attributes per radius"),
                     fluidRow(
                       column(3,
-                             selectInput("prov", "Provincia", c("Provincias"="", provincias),
+                             selectInput("prov", "Province", c("Provincias"="", provincias),
                                          selected = 'Mendoza')
                       ),
                       column(3,
                              conditionalPanel("input.prov",
-                                              selectInput("deptos", "Departamento", c("Departamentos"="", departamentos), 
+                                              selectInput("deptos", "District", c("Departamentos"="", departamentos), 
                                                           selected = "Capital", multiple=TRUE)
                              )
                       )
                     ),
                     fluidRow(
                       column(2,
-                             numericInput("minScore", "Mín. índice", min=0, max=5, value=0)
+                             numericInput("minScore", "Min. score", min=0, max=5, value=0)
                       ),
                       column(2,
-                             numericInput("maxScore", "Máx. índice", min=0, max=5, value=5)
+                             numericInput("maxScore", "Max. score", min=0, max=5, value=5)
                       )
                     ),
                     hr(),

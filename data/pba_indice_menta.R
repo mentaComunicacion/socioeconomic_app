@@ -70,39 +70,44 @@ pca_loadings %>%
   ggplot() +
   geom_col(aes(rowname, dim_1, fill = "")) +
   scale_fill_manual(values = menta) +
-  scale_x_discrete(labels = c("Edad mediana", "Edad promedio", "% viviendas deficientes", 
-                              "% jefe sec. completo", "% mujeres",  "% hogares NBI", "% jefe ocupado")
+  scale_x_discrete(labels = c("Median age", "Mean age", "% hhs with poor housing conditions", 
+                              "% hhs with householder who has at least a high school degree", "% women",  "% of hhs with at least one Unmet Basic Needs (NBI)", 
+                              "% of hhs with employed householder")
                    ) +
   lims(y = c(- 1, 1)) +
-  labs(title = "Índice socioeconómico",
-    subtitle = "Dimensión principal",
-       y = "Valor de la variable",
+  labs(title = "Socioeconomic Index",
+    subtitle = "Primary Dimension",
+       y = "",
        x = "",
     fill = "") +
   coord_flip() +
   theme_minimal() +
   theme(legend.position = "none")
 
-ggsave("pca_dim1.png")
+dev.off() 
+
+ggsave("pca_dim1.png",width = 30, units = "cm")
 
 pca_loadings %>% 
   ggplot() +
   geom_col(aes(rowname, dim_2, fill = "")) +
   scale_fill_manual(values = menta) +
-  scale_x_discrete(labels = c("Edad mediana", "Edad promedio", "% viviendas deficientes", 
-                              "% jefe sec. completo", "% mujeres",  "% hogares NBI", "% jefe ocupado")
+  scale_x_discrete(labels = c("Median age", "Mean age", "% hhs with poor housing conditions", 
+                              "% hhs with householder who has at least a high school degree", "% women",  "% of hhs with at least one Unmet Basic Needs (NBI)", 
+                              "% of hhs with employed householder")
   ) +
   lims(y = c(- 1, 1)) +
-  labs(title = "Índice socioeconómico",
-       subtitle = "Dimensión secundaria",
-       y = "Valor de la variable",
+  labs(title = "Socioeconomic Index",
+       subtitle = "Secondary Dimension",
+       y = "",
        x = "",
        fill = "") +
   coord_flip() +
   theme_minimal() +
   theme(legend.position = "none")
-  
-ggsave("pca_dim2.png")
+
+dev.off()  
+ggsave("pca_dim2.png",width = 30, units = "cm")
 
 grid.arrange(plot_pca_dim1, plot_pca_dim2, ncol = 2, 
              top = "Características del Índice Socioeconómico Menta")

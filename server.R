@@ -87,7 +87,7 @@ function(input, output, session) {
      addPolygons(weight = 1.5, opacity = 0.3, color = "grey", stroke = TRUE,
                  fillColor = ~ pal(colorData), fillOpacity = 0.5, 
                  layerId = ~ link) %>%
-      addLegend("bottomleft", pal=pal, values=colorData, title = "Intervalos",
+      addLegend("bottomleft", pal=pal, values=colorData, title = "Intervals",
                  layerId="colorLegend")
   })
   
@@ -196,9 +196,9 @@ function(input, output, session) {
   
 ###--- PCA plots
   
-  output$pca_dim1 <- renderImage({"pca_dim1.png"})
+  output$pca_dim1 <- renderImage({"www/pca_dim1.png"})
   
-  output$pca_dim2 <- renderImage({"pca_dim2.png"})
+  output$pca_dim2 <- renderImage({"www/pca_dim2.png"})
   
   
 }
