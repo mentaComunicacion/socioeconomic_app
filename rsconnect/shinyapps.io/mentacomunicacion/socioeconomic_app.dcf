@@ -1,0 +1,12 @@
+name: socioeconomic_app
+title: socioeconomic_app
+username:
+account: mentacomunicacion
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 1935819
+bundleId: 2872774
+url: https://mentacomunicacion.shinyapps.io/socioeconomic_app/
+when: 1583956380.38821
+asMultiple: FALSE
+asStatic: FALSE

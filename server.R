@@ -1,12 +1,19 @@
 #Cargo las librerías
-paquetes <- list("tidyverse", "ggrepel", "lattice","scales", "RColorBrewer", 
-                 "leaflet")
+#paquetes <- list("tidyverse", "ggrepel", "lattice","scales", "RColorBrewer", 
+#                 "leaflet")
+#
+#for (i in seq_along(paquetes)) {
+#  if (!require(paquetes[[i]], character.only = TRUE)) 
+#  {install.packages(paquetes[[i]])}
+#  require(paquetes[[i]], character.only = TRUE)
+#}
 
-for (i in seq_along(paquetes)) {
-  if (!require(paquetes[[i]], character.only = TRUE)) 
-  {install.packages(paquetes[[i]])}
-  require(paquetes[[i]], character.only = TRUE)
-}
+library("tidyverse")
+library("ggrepel")
+library("lattice")
+library(scales)
+library(leaflet)
+library(RColorBrewer)
 
 set.seed(100)
 
@@ -95,13 +102,14 @@ function(input, output, session) {
   showZipcodePopup <- function(link_elegido, lat, lng) {
     selectedZip <- filter(zipsInBounds(), link == link_elegido)
     content <- as.character(tagList(
-      tags$h4("Índice: ", selectedZip$scr_mnt),
+      tags$h4("Index: ", selectedZip$scr_mnt),
       tags$strong(sprintf("%s, %s",
                                selectedZip$depto, selectedZip$provincia
       )), tags$br(),
-      sprintf("Fracción: %s", selectedZip$idfrac), tags$br(),
-      sprintf("Radio: %s", selectedZip$idradio), tags$br(),
-      sprintf("Personas: %s", selectedZip$totlpbl)
+      sprintf("Fraction: %s", selectedZip$idfrac), tags$br(),
+      sprintf("Radius: %s", selectedZip$idradio), tags$br(),
+      sprintf("Population: %s", selectedZip$totlpbl), tags$br(),
+      sprintf("Households: %s", selectedZip$hogares)
     ))
     leafletProxy("map") %>% addPopups(lng, lat, content, layerId = link_elegido)
   }
@@ -184,7 +192,7 @@ function(input, output, session) {
         depto %in% input$deptos) %>%
     select(provincia, depto, idfrac, idradio, scr_mnt, totlpbl, hogares)
     
-    names(df) <- c('Provincia', 'Departamento', 'Fracción', 'Radio', 'Índice', 'Personas', 'Hogares')
+    names(df) <- c('Province', 'District', 'Fraction', 'Radius', 'Index', 'Population', 'Households')
     
     action <- DT::dataTableAjax(session, df) 
     

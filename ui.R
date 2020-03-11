@@ -12,9 +12,8 @@ vars <- c(
 navbarPage(title = div(
            div(
             id = "img-id",
-            img(src = "http://mentacomunicacion.com.ar/wp-content/uploads/2018/04/logo_menta_web_06.png",
-                height = 36, width = 100)
-           ),
+            tags$a(img(src = "http://mentacomunicacion.com.ar/wp-content/uploads/2018/04/logo_menta_web_06.png",
+                       height = 36, width = 100),href="https://mentacomunicacion.com.ar/bigdata/",target = '_blank')),
            "SOCIOECONOMIC INDEX", id = "title"),
            id="navbar",
            position = "fixed-top",
@@ -47,13 +46,38 @@ navbarPage(title = div(
                                       numericInput("maxScoreMap", "Max. Score", min = 0, max = 5, value = 5)
                         ))
                         ),
-                        
                         tags$div(id="cite",
-                                 'Developed by ', tags$em('Menta Comunicación SRL'), ' (All rights reserved).'
+                                 'Developed by ', tags$em('Menta Comunicación SRL')
                         )
                     )
            ),
            
+           tabPanel("Attributes",
+                    icon("crosshair"),
+                    h2("Attributes per radius"),
+                    fluidRow(
+                      column(3,
+                             selectInput("prov", "Province", c("Provincias"="", provincias),
+                                         selected = 'Mendoza')
+                      ),
+                      column(3,
+                             conditionalPanel("input.prov",
+                                              selectInput("deptos", "District", c("Departamentos"="", departamentos), 
+                                                          selected = "Capital", multiple=TRUE)
+                             )
+                      )
+                    ),
+                    fluidRow(
+                      column(2,
+                             numericInput("minScore", "Min. score", min=0, max=5, value=0)
+                      ),
+                      column(2,
+                             numericInput("maxScore", "Max. score", min=0, max=5, value=5)
+                      )
+                    ),
+                    hr(),
+                    DT::dataTableOutput("ziptable")
+           ),
            tabPanel("About",
                     icon("crosshair"),
                     h2("Key Features"),
@@ -81,37 +105,12 @@ navbarPage(title = div(
                     h4("The Primary Dimension of the PCA explains almost half of the total variability (47%) of the data set and it describes in only one variable the socioeconomic characteristics 
                        of the radius population."),
                     tags$img(src = "pca_dim1.png", align = "center", height = "480px", width = "800px"),
-                  br(),
-                  br(),
-                  h4("The Secondary Dimension explains almost 20% of the total variability and it mainly describes the characteristics of radius 
+                    br(),
+                    br(),
+                    h4("The Secondary Dimension explains almost 20% of the total variability and it mainly describes the characteristics of radius 
                      with low % of hhs with employed householder:"),
                     tags$img(src = "pca_dim2.png", align = "center",  height = "480px", width = "800px"),
                     hr()
-                    ),
-           tabPanel("Attributes",
-                    icon("crosshair"),
-                    h2("Attributes per radius"),
-                    fluidRow(
-                      column(3,
-                             selectInput("prov", "Province", c("Provincias"="", provincias),
-                                         selected = 'Mendoza')
-                      ),
-                      column(3,
-                             conditionalPanel("input.prov",
-                                              selectInput("deptos", "District", c("Departamentos"="", departamentos), 
-                                                          selected = "Capital", multiple=TRUE)
-                             )
-                      )
-                    ),
-                    fluidRow(
-                      column(2,
-                             numericInput("minScore", "Min. score", min=0, max=5, value=0)
-                      ),
-                      column(2,
-                             numericInput("maxScore", "Max. score", min=0, max=5, value=5)
-                      )
-                    ),
-                    hr(),
-                    DT::dataTableOutput("ziptable")
            )
+           
         )
