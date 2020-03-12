@@ -1,3 +1,5 @@
+![](https://community.rstudio.com/uploads/default/original/3X/6/e/6ee529c6ed5fd872e3847ac56c46f18f03180fec.png)
+
 The ***Socioeconomic Index App*** is a tool that aims to facilitate the analysis of the socioeconomic characteristics of the population. This serves as an input for the design and impact evaluation of public policy. Also, based on the premise that there is an association between socioeconomic level and electoral behavior, it may be helpful for electoral analysis and strategies. In a few words, the main purpose of the tool is to carry out more precise and exhaustive diagnoses that serve to a better understanding of how politics works and how to design public policy.
 
 Based on disaggregated data from the 2010 National Census (INDEC, 2012) we elaborated an index that summarizes a large volume of information in a census radius level for the entire territory of Argentina.
