@@ -33,3 +33,10 @@ Another useful element is found in the filters of the Index (at the bottom end o
 
 Finally, the application also allows you to explore the indicators from a table with all the observations for the entire country, with the additional possibility of filtering by certain values of interest.
 
+**Keywords**: _gis, data_viz, socioeconomic, spatial, leaflet_
+
+**Shiny app**: [https://mentacomunicacion.shinyapps.io/socioeconomic_app/](https://mentacomunicacion.shinyapps.io/socioeconomic_app/)
+
+**RStudio Cloud**: [https://rstudio.cloud/project/1035331
+](https://rstudio.cloud/project/1035331
+)
