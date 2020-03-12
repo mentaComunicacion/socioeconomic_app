@@ -1,12 +1,4 @@
-#Cargo las librerías
-#paquetes <- list("tidyverse", "ggrepel", "lattice","scales", "RColorBrewer", 
-#                 "leaflet")
-#
-#for (i in seq_along(paquetes)) {
-#  if (!require(paquetes[[i]], character.only = TRUE)) 
-#  {install.packages(paquetes[[i]])}
-#  require(paquetes[[i]], character.only = TRUE)
-#}
+# LOAD LIBRARIES
 
 library("tidyverse")
 library("ggrepel")
@@ -23,7 +15,7 @@ function(input, output, session) {
   
   ## Interactive Map ###########################################
   
-  # Creo el mapa
+  # Build the map
   output$map <- renderLeaflet({
     leaflet() %>%
       addTiles(
@@ -33,7 +25,7 @@ function(input, output, session) {
       setView(lng = -66, lat = -35, zoom = 5)
   })
   
-  # Devuelve los radios que cumplen con el criterio
+  # Get census radius 
    zipsInBounds <- reactive({
      filter(resultados, 
             provincia == input$provincia,
@@ -54,8 +46,8 @@ function(input, output, session) {
     
   })
   
-# Asigno los colores y las leyendas de los intervalos de colores
-
+# Customize legend
+# 
   observe({
     
     if (nrow(filtered_data())==0)
@@ -98,7 +90,7 @@ function(input, output, session) {
                  layerId="colorLegend")
   })
   
-  # Muestra el popup con los datos de cada radio
+  #  popup with census radio data
   showZipcodePopup <- function(link_elegido, lat, lng) {
     selectedZip <- filter(zipsInBounds(), link == link_elegido)
     content <- as.character(tagList(
@@ -200,7 +192,7 @@ function(input, output, session) {
       DT::formatStyle(1, backgroundColor = 'white', target = 'row')
   })
   
-  # Atención: esta llave cierra la función  
+ 
   
 ###--- PCA plots
   
@@ -208,5 +200,5 @@ function(input, output, session) {
   
   output$pca_dim2 <- renderImage({"www/pca_dim2.png"})
   
-  
-}
+   
+}# CAUTION: THIS ONE CLOSE THE CODE  
